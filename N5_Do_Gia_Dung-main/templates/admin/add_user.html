@@ -1,0 +1,18 @@
+{% extends "layout.html" %} {% block content %}
+<h2>Thêm người dùng</h2>
+<form method="post" class="w-50">
+  <div class="mb-3">
+    <label>Tên đăng nhập:</label>
+    <input type="text" name="username" class="form-control" required />
+  </div>
+  <div class="mb-3">
+    <label>Mật khẩu:</label>
+    <input type="password" name="password" class="form-control" required />
+  </div>
+  <div class="mb-3">
+    <label>Là admin?</label>
+    <input type="checkbox" name="is_admin" />
+  </div>
+  <button class="btn btn-success" type="submit">Lưu</button>
+</form>
+{% endblock %}

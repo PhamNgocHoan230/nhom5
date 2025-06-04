@@ -1,0 +1,49 @@
+{% extends "layout.html" %} {% block content %}
+<h2>Thêm sản phẩm</h2>
+<form method="post" enctype="multipart/form-data">
+  <div class="mb-3">
+    <label>Tên sản phẩm:</label>
+    <input type="text" name="name" class="form-control" required />
+  </div>
+  <!-- ... các input khác ... -->
+  <div class="mb-3">
+    <label for="category" class="form-label">Phân loại</label>
+    <select class="form-select" id="category" name="category" required>
+      <option value="sanpham1">Nồi cơm điện</option>
+      <option value="sanpham2">Máy xay thực phẩm</option>
+      <option value="sanpham3">Quạt sàn/Quạt hộp</option>
+    </select>
+  </div>
+  <!-- ... -->
+  <div class="mb-3">
+    <label>Giá:</label>
+    <input
+      type="number"
+      name="price"
+      class="form-control"
+      step="0.01"
+      required
+    />
+  </div>
+  <div class="mb-3">
+    <label for="image" class="form-label">Ảnh sản phẩm</label>
+    <input
+      type="file"
+      class="form-control"
+      id="image"
+      name="image"
+      accept="image/*"
+      required
+    />
+  </div>
+  <div class="mb-3">
+    <label>Lượt bán:</label>
+    <input type="number" name="sales" class="form-control" value="0" />
+  </div>
+  <div class="mb-3">
+    <label>Mô tả:</label>
+    <textarea name="description" class="form-control"></textarea>
+  </div>
+  <button type="submit" class="btn btn-primary">Thêm sản phẩm</button>
+</form>
+{% endblock %}

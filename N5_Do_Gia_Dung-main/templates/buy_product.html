@@ -1,0 +1,25 @@
+{% extends "layout.html" %} {% block content %}
+<div class="card mt-4">
+  <div class="card-header bg-primary text-white">Mua {{ product.name }}</div>
+  <div class="card-body">
+    <form method="post">
+      <div class="mb-3">
+        <label for="address" class="form-label">Địa chỉ nhận hàng</label>
+        <textarea
+          class="form-control"
+          id="address"
+          name="address"
+          rows="3"
+          required
+        ></textarea>
+      </div>
+      <button type="submit" class="btn btn-success">Xác nhận mua</button>
+      <a
+        href="{{ url_for('product_detail', product_id=product.id) }}"
+        class="btn btn-secondary"
+        >Quay lại</a
+      >
+    </form>
+  </div>
+</div>
+{% endblock %}

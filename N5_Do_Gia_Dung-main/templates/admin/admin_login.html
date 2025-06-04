@@ -1,0 +1,16 @@
+{% extends "layout.html" %} {% block content %}
+<section class="mt-5">
+  <h2>Đăng nhập quản trị viên</h2>
+  <form method="post" class="w-50 mx-auto">
+    <div class="mb-3">
+      <label for="username" class="form-label">Tên đăng nhập:</label>
+      <input type="text" name="username" class="form-control" required />
+    </div>
+    <div class="mb-3">
+      <label for="password" class="form-label">Mật khẩu:</label>
+      <input type="password" name="password" class="form-control" required />
+    </div>
+    <button class="btn btn-primary" type="submit">Đăng nhập</button>
+  </form>
+</section>
+{% endblock %}

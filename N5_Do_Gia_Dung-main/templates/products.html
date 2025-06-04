@@ -1,0 +1,62 @@
+{% extends "layout.html" %} {% block content %}
+<section>
+  <h2>Danh sách sản phẩm</h2>
+  <div class="row">
+    {% for product in products.items %}
+    <div class="col-6 col-md-3 mb-4">
+      <div class="card h-100">
+        <a href="{{ url_for('product_detail', product_id=product.id) }}">
+          <img
+            src="{{ product.image }}"
+            class="card-img-top"
+            alt="{{ product.name }}"
+          />
+        </a>
+        <div class="card-body">
+          <h5 class="card-title">{{ product.name }}</h5>
+          <p class="card-text text-danger">
+            {{ "{:,.0f}".format(product.price) }} đ
+          </p>
+          <a
+            href="{{ url_for('product_detail', product_id=product.id) }}"
+            class="btn btn-primary btn-sm"
+            >Xem chi tiết</a
+          >
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  <!-- Pagination -->
+  <nav>
+    <ul class="pagination">
+      {% if products.has_prev %}
+      <li class="page-item">
+        <a
+          href="{{ url_for('products', page=products.prev_num) }}"
+          class="page-link"
+          >Trước</a
+        >
+      </li>
+      {% endif %} {% for p in products.iter_pages(left_edge=1, right_edge=1,
+      left_current=2, right_current=2) %} {% if p %}
+      <li class="page-item {% if p == products.page %}active{% endif %}">
+        <a class="page-link" href="{{ url_for('products', page=p) }}"
+          >{{ p }}</a
+        >
+      </li>
+      {% else %}
+      <li class="page-item disabled"><span class="page-link">…</span></li>
+      {% endif %} {% endfor %} {% if products.has_next %}
+      <li class="page-item">
+        <a
+          href="{{ url_for('products', page=products.next_num) }}"
+          class="page-link"
+          >Sau</a
+        >
+      </li>
+      {% endif %}
+    </ul>
+  </nav>
+</section>
+{% endblock %}
