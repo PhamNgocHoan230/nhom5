@@ -1,0 +1,50 @@
+{% extends "layout.html" %} {% block content %}
+<section id="gioithieu">
+  <h2>Giới thiệu về đơn vị</h2>
+  <img
+    src="{{ url_for('static', filename='images/company.jpg') }}"
+    alt="Giới thiệu"
+    width="100%"
+  />
+  <h5>
+    Chúng tôi là đơn vị cung cấp các sản phẩm chất lượng cao, đa dạng mẫu mã,
+    giá cả hợp lý. Hình thức bán hàng thuận tiện, hỗ trợ khách hàng 24/7, giao
+    hàng nhanh chóng.
+  </h5>
+</section>
+<hr />
+<section id="sanpham">
+  <h2>Danh sách sản phẩm</h2>
+  <p>
+    Xem danh sách sản phẩm của chúng tôi
+    <a href="{{ url_for('products') }}">tại đây.</a>
+  </p>
+</section>
+<hr />
+<section id="top10">
+  <h2>Top 10 sản phẩm nổi bật</h2>
+  <canvas id="topProductsChart" width="400" height="200"></canvas>
+  <script>
+    $(document).ready(function () {
+      $.getJSON("/top-products", function (data) {
+        let ctx = document.getElementById("topProductsChart").getContext("2d");
+        let labels = data.map((x) => x.name);
+        let sales = data.map((x) => x.sales);
+        new Chart(ctx, {
+          type: "bar",
+          data: {
+            labels: labels,
+            datasets: [
+              {
+                label: "Lượt bán",
+                data: sales,
+                backgroundColor: "rgba(54, 162, 235, 0.7)",
+              },
+            ],
+          },
+        });
+      });
+    });
+  </script>
+</section>
+{% endblock %}

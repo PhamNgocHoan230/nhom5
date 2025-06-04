@@ -1,0 +1,18 @@
+{% extends "layout.html" %} {% block content %}
+<section>
+  <h2>{{ product.name }}</h2>
+  <img src="{{ product.image }}" alt="{{ product.name }}" width="300" />
+  <p>
+    <b>Giá:</b>
+    <span class="text-danger">{{ "{:,.0f}".format(product.price) }} đ</span>
+  </p>
+  <p><b>Lượt bán:</b> {{ product.sales }}</p>
+  <p><b>Mô tả:</b> {{ product.description }}</p>
+  <a
+    href="{{ url_for('buy_product', product_id=product.id) }}"
+    class="btn btn-success"
+    >Mua</a
+  >
+  <a href="{{ url_for('products') }}" class="btn btn-secondary">Quay lại</a>
+</section>
+{% endblock %}

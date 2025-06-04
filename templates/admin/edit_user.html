@@ -1,0 +1,33 @@
+{% extends "layout.html" %} {% block content %}
+<h2>Sửa người dùng</h2>
+<form method="post" class="w-50">
+  <div class="mb-3">
+    <label>Tên đăng nhập:</label>
+    <input
+      type="text"
+      name="username"
+      class="form-control"
+      required
+      value="{{ user.username }}"
+    />
+  </div>
+  <div class="mb-3">
+    <label>Mật khẩu mới (để trống nếu không đổi):</label>
+    <input type="password" name="password" class="form-control" />
+  </div>
+  <div class="mb-3">
+    <label>Là admin?</label>
+    <input
+      type="checkbox"
+      name="is_admin"
+      {%
+      if
+      user.is_admin
+      %}checked{%
+      endif
+      %}
+    />
+  </div>
+  <button class="btn btn-success" type="submit">Cập nhật</button>
+</form>
+{% endblock %}

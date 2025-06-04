@@ -1,0 +1,7 @@
+{% extends "layout.html" %} {% block content %}
+<section>
+  <h1>Bảng điều khiển quản trị</h1>
+  <h3><a href="{{ url_for('admin_users') }}">Quản lý người dùng</a></h3>
+  <h3><a href="{{ url_for('admin_products') }}">Quản lý sản phẩm</a></h3>
+</section>
+{% endblock %}

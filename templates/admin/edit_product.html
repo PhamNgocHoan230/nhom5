@@ -1,0 +1,52 @@
+{% extends "layout.html" %} {% block content %}
+<h2>Sửa sản phẩm</h2>
+<form method="post" class="w-50">
+  <div class="mb-3">
+    <label>Tên sản phẩm:</label>
+    <input
+      type="text"
+      name="name"
+      class="form-control"
+      required
+      value="{{ product.name }}"
+    />
+  </div>
+  <div class="mb-3">
+    <label>Giá:</label>
+    <input
+      type="number"
+      name="price"
+      class="form-control"
+      step="0.01"
+      required
+      value="{{ product.price }}"
+    />
+  </div>
+  <div class="mb-3">
+    <label>Link ảnh:</label>
+    <input
+      type="text"
+      name="image"
+      class="form-control"
+      required
+      value="{{ product.image }}"
+    />
+  </div>
+  <div class="mb-3">
+    <label>Lượt bán:</label>
+    <input
+      type="number"
+      name="sales"
+      class="form-control"
+      value="{{ product.sales }}"
+    />
+  </div>
+  <div class="mb-3">
+    <label>Mô tả:</label>
+    <textarea name="description" class="form-control">
+{{ product.description }}</textarea
+    >
+  </div>
+  <button class="btn btn-success" type="submit">Cập nhật</button>
+</form>
+{% endblock %}
